@@ -11,6 +11,15 @@ export default defineConfig(({ mode }) => {
       server: {
         host: '0.0.0.0',
         port: Number(process.env.PORT || 4173),
+        hmr: false,
+        preview: {
+          host: '0.0.0.0',
+          port: Number(process.env.PORT || 4173),
+          strictPort: true,
+          allowedHosts: [
+            'text-game-knnh.onrender.com'
+          ]
+        }
       },
       resolve: {
         alias: {
