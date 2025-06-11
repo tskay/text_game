@@ -3,7 +3,7 @@ services:
     name: energy-quest-app
     runtime: node                 # ← correct field name
     plan: starter
-    buildCommand: npm install --production=false && npm run build
+    buildCommand: bun install --production=false && bun run build
     startCommand: npm run preview
     envVars:
       - key: NODE_VERSION
