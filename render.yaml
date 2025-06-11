@@ -1,7 +1,7 @@
 services:
   - type: web
     name: energy-quest-app
-    env: node
+    runtime: node                 # ← correct field name
     plan: starter
     buildCommand: npm install && npm run build
     startCommand: npm run preview
