@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: energy-quest-app
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: NODE_VERSION
+        value: "22.14.0"
+      - key: GEMINI_API_KEY
+        fromSecret: GEMINI_API_KEY
