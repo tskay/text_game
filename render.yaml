@@ -4,7 +4,7 @@ services:
     runtime: node                 # ← correct field name
     plan: starter
     buildCommand: bun install --production=false && bun run build
-    startCommand: bun run preview
+    startCommand: bun run start
     envVars:
       - key: NODE_VERSION
         value: "22.14.0"
