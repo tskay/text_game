@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,41 @@
     body {
       font-family: 'Inter', sans-serif; /* A nice default sans-serif font often available with Tailwind or easily added */
     }
+    
+    /* CSS Custom Properties for manual height control */
+    :root {
+      --game-min-height: 100vh;
+      --game-max-height: none;
+      --game-height: auto;
+    }
+    
+    /* Embeddable game container */
+    .game-container {
+      min-height: var(--game-min-height);
+      max-height: var(--game-max-height);
+      height: var(--game-height);
+      overflow-y: auto;
+    }
+    
+    /* Responsive breakpoints for different embed sizes */
+    @media (max-width: 640px) {
+      .game-container {
+        --game-min-height: 100vh;
+      }
+    }
+    
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .game-container {
+        --game-min-height: 90vh;
+      }
+    }
+    
+    @media (min-width: 1025px) {
+      .game-container {
+        --game-min-height: 80vh;
+      }
+    }
+    
     /* For custom scrollbar aesthetics if desired, optional */
     ::-webkit-scrollbar {
       width: 8px;

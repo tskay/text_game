@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { StoryDisplay } from './components/StoryDisplay';
 import { Choices } from './components/Choices';
@@ -116,33 +115,33 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-slate-100 flex flex-col">
+    <div className="game-container min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-slate-100 flex flex-col">
       {gameState.isLoading && <LoadingSpinner message={gameState.loadingMessage} />}
       
-      <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
-        <header className="text-center mb-8 md:mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
+      <main className="flex-grow container mx-auto px-4 py-4 md:py-8 lg:py-12 max-w-6xl">
+        <header className="text-center mb-4 md:mb-8 lg:mb-12">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
             {APP_TITLE}
           </h1>
         </header>
 
         {gameState.error && (
-          <div className="bg-red-500 bg-opacity-20 border border-red-700 text-red-300 px-4 py-3 rounded-lg relative mb-6 text-center" role="alert">
+          <div className="bg-red-500 bg-opacity-20 border border-red-700 text-red-300 px-4 py-3 rounded-lg relative mb-4 md:mb-6 text-center" role="alert">
             <strong className="font-bold">Oops! </strong>
             <span className="block sm:inline">{gameState.error}</span>
           </div>
         )}
 
         {!gameState.gameStarted && gameState.apiKeyOk && !gameState.isLoading && (
-          <div className="text-center p-8 bg-slate-800 shadow-2xl rounded-xl">
-            <h2 className="text-3xl font-semibold mb-6 text-sky-300">Welcome, Innovator!</h2>
-            <p className="text-lg mb-8 text-slate-300 max-w-xl mx-auto">
+          <div className="text-center p-4 md:p-8 bg-slate-800 shadow-2xl rounded-xl">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-sky-300">Welcome, Innovator!</h2>
+            <p className="text-base md:text-lg mb-6 md:mb-8 text-slate-300 max-w-xl mx-auto">
               Embark on a journey to explore challenges and triumphs in achieving UN Sustainable Development Goal 7: Affordable and Clean Energy for all. Your choices will shape the story.
             </p>
             <button
               onClick={handleStartGame}
               disabled={gameState.isLoading || !gameState.apiKeyOk}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-10 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 text-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 md:py-4 px-6 md:px-10 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 text-lg md:text-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Start Your Adventure
             </button>
@@ -150,7 +149,7 @@ const App: React.FC = () => {
         )}
 
         {gameState.gameStarted && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <StoryDisplay 
                 story={gameState.currentStory} 
                 imageUrl={gameState.currentImageUrl}
