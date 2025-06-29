@@ -149,33 +149,20 @@ const App: React.FC = () => {
         )}
 
         {gameState.gameStarted && (
-          <div className="max-w-3xl mx-auto h-[80vh] flex flex-col gap-4 bg-white/10 rounded-xl shadow-lg overflow-hidden">
-            {/* Image at the top */}
-            {gameState.currentImageUrl && (
-              <div className="flex-shrink-0 w-full aspect-video bg-slate-200 flex items-center justify-center">
-                <img
-                  src={gameState.currentImageUrl}
-                  alt="Adventure scene"
-                  className="max-h-60 w-auto mx-auto object-contain rounded-t-xl"
-                  style={{ maxWidth: '100%', height: 'auto' }}
-                />
-              </div>
-            )}
-            {/* Story text in the middle, scrollable if needed */}
-            <div className="flex-1 overflow-y-auto px-4 py-2">
-              <StoryDisplay
-                story={gameState.currentStory}
-                imageUrl={null}
-                isInitialLoad={gameState.isInitialLoad && !gameState.currentStory}
+          <div className="max-w-3xl mx-auto flex flex-col items-stretch justify-between h-[80vh] min-h-[600px] bg-white/90 rounded-2xl shadow-2xl p-4 md:p-8 overflow-hidden">
+            <div className="flex-1 flex flex-col justify-start overflow-y-auto">
+              <StoryDisplay 
+                story={gameState.currentStory} 
+                imageUrl={gameState.currentImageUrl}
+                isInitialLoad={gameState.isInitialLoad && !gameState.currentStory} 
               />
             </div>
-            {/* Choices at the bottom */}
             {!gameState.isLoading && gameState.choices.length > 0 && (
-              <div className="p-4 bg-white/20 rounded-b-xl">
-                <Choices
-                  choices={gameState.choices}
-                  onChoiceSelected={handleChoiceSelected}
-                  disabled={gameState.isLoading}
+              <div className="mt-4 flex-shrink-0">
+                <Choices 
+                  choices={gameState.choices} 
+                  onChoiceSelected={handleChoiceSelected} 
+                  disabled={gameState.isLoading} 
                 />
               </div>
             )}
