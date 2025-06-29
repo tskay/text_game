@@ -1,20 +1,20 @@
-
 import React from 'react';
 
 interface StoryDisplayProps {
   story: string;
   imageUrl: string | null;
   isInitialLoad: boolean;
+  layout?: 'vertical';
 }
 
-export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isInitialLoad }) => {
+export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isInitialLoad, layout = 'vertical' }) => {
   if (isInitialLoad && !story) {
     return null; // Don't render anything if it's initial load and no story yet
   }
   return (
-    <div className="bg-white shadow-xl rounded-lg p-6 md:p-8 mb-6 md:mb-8 transition-all duration-500 ease-in-out">
+    <div className="flex flex-col h-full">
       {imageUrl && (
-        <div className="mb-6 rounded-lg overflow-hidden shadow-md aspect-video">
+        <div className="mb-4 rounded-lg overflow-hidden shadow-md aspect-video w-full">
           <img 
             src={imageUrl} 
             alt="Adventure scene" 
@@ -24,7 +24,7 @@ export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isI
         </div>
       )}
       {story && (
-         <p className="text-slate-700 text-lg leading-relaxed whitespace-pre-line animate-fadeIn">
+         <p className="text-slate-700 text-lg leading-relaxed whitespace-pre-line animate-fadeIn overflow-auto flex-1">
             {story}
         </p>
       )}

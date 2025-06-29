@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 interface ChoicesProps {
   choices: string[];
   onChoiceSelected: (choice: string) => void;
   disabled: boolean;
+  layout?: 'vertical';
 }
 
-export const Choices: React.FC<ChoicesProps> = ({ choices, onChoiceSelected, disabled }) => {
+export const Choices: React.FC<ChoicesProps> = ({ choices, onChoiceSelected, disabled, layout = 'vertical' }) => {
   if (!choices || choices.length === 0) {
     return null;
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className={layout === 'vertical' ? 'flex flex-col gap-4 w-full' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'}>
       {choices.map((choice, index) => (
         <button
           key={index}
