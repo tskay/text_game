@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { StoryDisplay } from './components/StoryDisplay';
 import { Choices } from './components/Choices';
@@ -115,33 +116,33 @@ const App: React.FC = () => {
 
 
   return (
-    <div className="game-container min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 text-slate-100 flex flex-col">
       {gameState.isLoading && <LoadingSpinner message={gameState.loadingMessage} />}
       
-      <main className="flex-grow container mx-auto px-4 py-2 md:py-4 lg:py-6 max-w-7xl h-full flex flex-col">
-        <header className="text-center mb-2 md:mb-4 lg:mb-6 flex-shrink-0">
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
+      <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
+        <header className="text-center mb-8 md:mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">
             {APP_TITLE}
           </h1>
         </header>
 
         {gameState.error && (
-          <div className="bg-red-500 bg-opacity-20 border border-red-700 text-red-300 px-3 py-2 rounded-lg relative mb-2 md:mb-4 text-center flex-shrink-0" role="alert">
+          <div className="bg-red-500 bg-opacity-20 border border-red-700 text-red-300 px-4 py-3 rounded-lg relative mb-6 text-center" role="alert">
             <strong className="font-bold">Oops! </strong>
             <span className="block sm:inline">{gameState.error}</span>
           </div>
         )}
 
         {!gameState.gameStarted && gameState.apiKeyOk && !gameState.isLoading && (
-          <div className="text-center p-4 md:p-6 bg-slate-800 shadow-2xl rounded-xl flex-shrink-0">
-            <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-3 md:mb-4 text-sky-300">Welcome, Innovator!</h2>
-            <p className="text-sm md:text-base mb-4 md:mb-6 text-slate-300 max-w-xl mx-auto">
+          <div className="text-center p-8 bg-slate-800 shadow-2xl rounded-xl">
+            <h2 className="text-3xl font-semibold mb-6 text-sky-300">Welcome, Innovator!</h2>
+            <p className="text-lg mb-8 text-slate-300 max-w-xl mx-auto">
               Embark on a journey to explore challenges and triumphs in achieving UN Sustainable Development Goal 7: Affordable and Clean Energy for all. Your choices will shape the story.
             </p>
             <button
               onClick={handleStartGame}
               disabled={gameState.isLoading || !gameState.apiKeyOk}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 text-base md:text-lg focus:outline-none focus:ring-4 focus:ring-emerald-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 px-10 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 text-xl focus:outline-none focus:ring-4 focus:ring-emerald-400 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Start Your Adventure
             </button>
@@ -149,22 +150,18 @@ const App: React.FC = () => {
         )}
 
         {gameState.gameStarted && (
-          <div className="flex-grow flex flex-col lg:flex-row gap-4 md:gap-6 min-h-0">
-            <div className="flex-grow flex flex-col lg:w-2/3">
-              <StoryDisplay 
-                  story={gameState.currentStory} 
-                  imageUrl={gameState.currentImageUrl}
-                  isInitialLoad={gameState.isInitialLoad && !gameState.currentStory} 
-              />
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <StoryDisplay 
+                story={gameState.currentStory} 
+                imageUrl={gameState.currentImageUrl}
+                isInitialLoad={gameState.isInitialLoad && !gameState.currentStory} 
+            />
             {!gameState.isLoading && gameState.choices.length > 0 && (
-              <div className="flex-shrink-0 lg:w-1/3">
-                <Choices 
-                  choices={gameState.choices} 
-                  onChoiceSelected={handleChoiceSelected} 
-                  disabled={gameState.isLoading} 
-                />
-              </div>
+              <Choices 
+                choices={gameState.choices} 
+                onChoiceSelected={handleChoiceSelected} 
+                disabled={gameState.isLoading} 
+              />
             )}
           </div>
         )}
