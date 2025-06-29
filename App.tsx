@@ -163,7 +163,7 @@ const App: React.FC = () => {
             </div>
             {/* Right: Choices (20%) */}
             {!gameState.isLoading && gameState.choices.length > 0 && (
-              <div className="md:w-[20%] w-full flex flex-col justify-center items-stretch mt-6 md:mt-0 overflow-y-auto max-h-full md:p-4 p-2">
+              <div className="md:w-[20%] w-full flex flex-col justify-center items-stretch mt-6 md:mt-0 md:overflow-y-auto md:max-h-full md:p-4 p-2">
                 <Choices 
                   choices={gameState.choices} 
                   onChoiceSelected={handleChoiceSelected} 
