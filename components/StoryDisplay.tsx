@@ -11,20 +11,21 @@ export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isI
     return null; // Don't render anything if it's initial load and no story yet
   }
   return (
-    <div className="bg-white shadow-xl rounded-lg p-4 md:p-6 h-full flex flex-col">
+    <div className="bg-white shadow-xl rounded-lg p-4 md:p-6 h-full flex flex-col items-center">
       {imageUrl && (
-        <div className="mb-4 rounded-lg overflow-hidden shadow-md flex-shrink-0" style={{ aspectRatio: '16/9', maxHeight: '40vh' }}>
+        <div className="mb-4 rounded-lg overflow-hidden shadow-md flex-shrink-0 flex justify-center w-full" style={{ aspectRatio: '16/9', maxHeight: '40vh' }}>
           <img 
             src={imageUrl} 
             alt="Adventure scene" 
-            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0" 
+            className="w-auto h-full max-h-[40vh] mx-auto object-cover transition-opacity duration-700 ease-in-out opacity-0"
+            style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
             onLoad={(e) => (e.target as HTMLImageElement).style.opacity = '1'}
           />
         </div>
       )}
       {story && (
-        <div className="flex-grow overflow-y-auto">
-          <p className="text-slate-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
+        <div className="flex-grow overflow-y-auto w-full">
+          <p className="text-slate-700 text-sm md:text-base leading-relaxed whitespace-pre-line text-center">
             {story}
           </p>
         </div>
