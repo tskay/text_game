@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ChoicesProps {
@@ -13,19 +12,22 @@ export const Choices: React.FC<ChoicesProps> = ({ choices, onChoiceSelected, dis
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {choices.map((choice, index) => (
-        <button
-          key={index}
-          onClick={() => onChoiceSelected(choice)}
-          disabled={disabled}
-          className={`w-full bg-sky-600 hover:bg-sky-700 disabled:bg-slate-400 text-white font-semibold py-3 px-5 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 transform hover:scale-105 disabled:transform-none ${
-            disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-          }`}
-        >
-          {choice}
-        </button>
-      ))}
+    <div className="bg-slate-800 shadow-xl rounded-lg p-4 md:p-6 h-full flex flex-col">
+      <h3 className="text-sky-300 font-semibold text-lg mb-4 text-center">What will you do?</h3>
+      <div className="flex-grow flex flex-col gap-3">
+        {choices.map((choice, index) => (
+          <button
+            key={index}
+            onClick={() => onChoiceSelected(choice)}
+            disabled={disabled}
+            className={`w-full bg-sky-600 hover:bg-sky-700 disabled:bg-slate-400 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 transform hover:scale-105 disabled:transform-none text-sm md:text-base flex-shrink-0 ${
+              disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+            }`}
+          >
+            {choice}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

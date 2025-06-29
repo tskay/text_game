@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface StoryDisplayProps {
@@ -12,21 +11,23 @@ export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isI
     return null; // Don't render anything if it's initial load and no story yet
   }
   return (
-    <div className="bg-white shadow-xl rounded-lg p-6 md:p-8 mb-6 md:mb-8 transition-all duration-500 ease-in-out">
+    <div className="bg-white shadow-xl rounded-lg p-4 md:p-6 h-full flex flex-col">
       {imageUrl && (
-        <div className="mb-6 rounded-lg overflow-hidden shadow-md aspect-video">
+        <div className="mb-4 rounded-lg overflow-hidden shadow-md flex-shrink-0" style={{ aspectRatio: '16/9', maxHeight: '40vh' }}>
           <img 
             src={imageUrl} 
             alt="Adventure scene" 
-            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn" 
+            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out opacity-0" 
             onLoad={(e) => (e.target as HTMLImageElement).style.opacity = '1'}
           />
         </div>
       )}
       {story && (
-         <p className="text-slate-700 text-lg leading-relaxed whitespace-pre-line animate-fadeIn">
+        <div className="flex-grow overflow-y-auto">
+          <p className="text-slate-700 text-sm md:text-base leading-relaxed whitespace-pre-line">
             {story}
-        </p>
+          </p>
+        </div>
       )}
     </div>
   );
