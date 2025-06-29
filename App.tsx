@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { StoryDisplay } from './components/StoryDisplay';
 import { Choices } from './components/Choices';
@@ -150,7 +149,7 @@ const App: React.FC = () => {
         )}
 
         {gameState.gameStarted && (
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto flex flex-col items-center justify-center h-[80vh] max-h-[80vh] overflow-auto gap-4">
             <StoryDisplay 
                 story={gameState.currentStory} 
                 imageUrl={gameState.currentImageUrl}
