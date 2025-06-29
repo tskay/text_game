@@ -150,8 +150,8 @@ const App: React.FC = () => {
 
         {gameState.gameStarted && (
           <div className="max-w-[1200px] w-full mx-auto flex flex-col md:flex-row items-stretch justify-between h-[80vh] min-h-[600px] bg-white/90 rounded-2xl shadow-2xl p-4 md:p-8 overflow-hidden">
-            {/* Left: Image + Story (70%) */}
-            <div className="md:w-[70%] w-full flex flex-col h-full pr-0 md:pr-6">
+            {/* Left: Image + Story (80%) */}
+            <div className="md:w-[80%] w-full flex flex-col h-full pr-0 md:pr-6 overflow-y-auto max-h-full">
               <div className="flex-shrink-0 mb-4">
                 <StoryDisplay 
                   story={gameState.currentStory} 
@@ -161,9 +161,9 @@ const App: React.FC = () => {
                 />
               </div>
             </div>
-            {/* Right: Choices (30%) */}
+            {/* Right: Choices (20%) */}
             {!gameState.isLoading && gameState.choices.length > 0 && (
-              <div className="md:w-[30%] w-full flex flex-col justify-center items-stretch mt-6 md:mt-0">
+              <div className="md:w-[20%] w-full flex flex-col justify-center items-stretch mt-6 md:mt-0 overflow-y-auto max-h-full">
                 <Choices 
                   choices={gameState.choices} 
                   onChoiceSelected={handleChoiceSelected} 
