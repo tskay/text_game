@@ -17,7 +17,7 @@ export const StoryDisplay: React.FC<StoryDisplayProps> = ({ story, imageUrl, isI
           <img 
             src={imageUrl} 
             alt="Adventure scene" 
-            className="w-auto h-full max-h-[40vh] mx-auto object-cover transition-opacity duration-700 ease-in-out opacity-0"
+            className="w-auto h-full max-h-[40vh] mx-auto object-contain transition-opacity duration-700 ease-in-out opacity-0"
             style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
             onLoad={(e) => (e.target as HTMLImageElement).style.opacity = '1'}
           />
