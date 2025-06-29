@@ -1,6 +1,5 @@
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { GEMINI_MODEL_TEXT, IMAGEN_MODEL, SYSTEM_INSTRUCTION_STORY, INITIAL_GAME_PROMPT_PAYLOAD } from '../constants';
+import { GEMINI_MODEL_TEXT, IMAGEN_MODEL, SYSTEM_INSTRUCTION_STORY, INITIAL_GAME_PROMPT_PAYLOAD, IMAGE_PROMPT } from '../constants';
 import type { StoryChoiceResponse } from '../types';
 
 let genAIInstance: GoogleGenAI | null = null;
@@ -66,7 +65,7 @@ export const generateStoryAndChoices = async (currentStoryContext: string, playe
 
 export const generateAdventureImage = async (storyExcerpt: string): Promise<string> => {
   const ai = getGenAIClient();
-  const imagePrompt = `A digital art illustration for a text adventure game about UN SDG7 (Affordable and Clean Energy). The scene depicts: ${storyExcerpt.substring(0, Math.min(storyExcerpt.length, 150))}. Emphasize hope, innovation, and community action towards sustainable energy. Style: vibrant, detailed, slightly stylized, optimistic.`;
+  const imagePrompt = IMAGE_PROMPT.replace('{storyExcerpt}', storyExcerpt.substring(0, Math.min(storyExcerpt.length, 150)));
 
   try {
     const response = await ai.models.generateImages({
